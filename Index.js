@@ -9,7 +9,7 @@ import { DBConnections } from "./Database/Db.js";
 import { Route } from "./Routes/User.js";
 
 const allowedOrigins = [
-  "https://frontend-hx95lfbs6-hazrat-usmans-projects.vercel.app",
+  "https://frontend-4w5pdjk8y-hazrat-usmans-projects.vercel.app",
   "http://localhost:5173", // for local dev with Vite
 ];
 
