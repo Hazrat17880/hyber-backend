@@ -8,6 +8,12 @@ import { DBConnections } from "./Database/Db.js";
 // import Rotues 
 import { Route } from "./Routes/User.js";
 
+const allowedOrigins = [
+  "https://frontend-hx95lfbs6-hazrat-usmans-projects.vercel.app",
+  "http://localhost:5173", // for local dev with Vite
+];
+
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -20,7 +26,17 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+
+app.use(cors({
+  origin: function(origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  }
+}));
+
 app.use(express.urlencoded({ extended: true }));
 
 
