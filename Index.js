@@ -8,6 +8,9 @@ import { DBConnections } from "./Database/Db.js";
 // import Rotues 
 import { Route } from "./Routes/User.js";
 
+// market place router 
+import router from "./Routes/MarketPlace.js";
+
 const allowedOrigins = [
   "http://localhost:5173",
   "https://frontend-21msmlhc7-hazrat-usmans-projects.vercel.app",
@@ -45,7 +48,12 @@ app.use(express.urlencoded({ extended: true }));
 DBConnections();
 
 // Routes
+
+/// user routes
 app.use(`/api/v1`,Route);
+
+/// market place route
+app.use(`/api/v1`,router);
 
 // Port from .env
 const PORT = process.env.PORT || 5000;
